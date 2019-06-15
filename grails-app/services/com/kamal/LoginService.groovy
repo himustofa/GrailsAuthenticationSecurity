@@ -24,7 +24,7 @@ class LoginService {
     //It is used for that user to authenticated/registered for accessing power
     boolean isAuthenticated(){
         def authorization = AppUtil.getAppSession()[AUTHORIZED]
-        if (authorization && authorization.isLoggedIn){
+        if (authorization && authorization.isLoggedIn){ //setUserAuthorization() isLoggedIn
             return true
         }
         return false
