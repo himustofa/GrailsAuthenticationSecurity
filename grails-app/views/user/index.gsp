@@ -187,9 +187,45 @@
     });
     $( document ).ready( function() {
         $( "#save" ).click( function ( event ){
+
+            var last = $('#lastName').val();
+            var email = $('#email').val();
+            var pass = $('#password').val();
+
+            if(last== ''){
+                swal("Warning!", "Last name is empty.", "warning");
+                //$('#lastName').next().show();
+                return false;
+            }
+            if(email== ''){
+                swal("Warning!", "Email is empty.", "warning");
+                //$('#email').next().show();
+                return false;
+            }
+            if(pass== ''){
+                swal("Warning!", "Password is empty.", "warning");
+                //$('#password').next().show();
+                return false;
+            }
+            if(IsEmail(email)==false){
+                swal("Warning!", "Invalid email.", "warning");
+                //$('#invalid_email').show();
+                return false;
+            }
+
             ajaxFunction('saveData');
         });
+        return false;
     });
+
+    function IsEmail(email) {
+        var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if(!regex.test(email)) {
+            return false;
+        }else{
+            return true;
+        }
+    }
 
 
 
